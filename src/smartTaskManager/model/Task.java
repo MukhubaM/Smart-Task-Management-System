@@ -19,7 +19,7 @@ public sealed abstract class Task implements Serializable permits SimpleTask, Sc
 
     @Override
     public String toString() {
-        String user = assignedUser == null ? "unassigned" : assignedUser.name();
+        String user = assignedUser == null ? "unassigned " : assignedUser.name();
         return String.format("%s{description='%s', assignedUser=%s}", getClass().getSimpleName(), description, user);
     }
 }

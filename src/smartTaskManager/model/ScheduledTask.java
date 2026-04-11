@@ -20,7 +20,7 @@ public final class ScheduledTask extends Task implements Prioritizable {
 
     @Override
     public String toString() {
-        return super.toString() + ", scheduledTime=" + scheduledTime;
+        return super.toString() + ", scheduledTime = " + scheduledTime;
     }
 }
 

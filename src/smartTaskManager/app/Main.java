@@ -20,12 +20,12 @@ public class Main {
         TaskManager manager = new TaskManager();
         TaskScheduler scheduler = new TaskScheduler();
 
-        // Seed data
+        // Starter data
         User alice = manager.addUser("Alice");
         User bob = manager.addUser("Bob");
 
-        Task t1 = new SimpleTask("Prepare project report", Priority.HIGH.level());
-        Task t2 = new ScheduledTask("Fix bugs in module", Priority.MEDIUM.level(), LocalDateTime.now().plusSeconds(10));
+        Task t1 = new SimpleTask("Prepare project report ", Priority.HIGH.level());
+        Task t2 = new ScheduledTask("Fix bugs in module ", Priority.MEDIUM.level(), LocalDateTime.now().plusSeconds(10));
         manager.addTask(t1);
         manager.addTask(t2);
         manager.assignTask(t1, alice);
@@ -49,18 +49,18 @@ public class Main {
                     System.out.println("Added user: " + u);
                 }
                 case "2" -> {
-                    System.out.print("Task type (1=Simple,2=Scheduled): ");
+                    System.out.print("Task type [1 = Simple, 2 = Scheduled]: ");
                     String type = scanner.nextLine().trim();
                     System.out.print("Description: ");
                     String desc = scanner.nextLine().trim();
-                    System.out.print("Priority (1=LOW,2=MEDIUM,3=HIGH): ");
+                    System.out.print("Priority [1 = LOW, 2 = MEDIUM, 3 = HIGH]: ");
                     int p = Integer.parseInt(scanner.nextLine().trim());
                     if ("1".equals(type)) {
                         Task t = new SimpleTask(desc, p);
                         manager.addTask(t);
                         System.out.println("Added: " + t);
                     } else {
-                        System.out.print("Scheduled time (YYYY-MM-DDTHH:MM): ");
+                        System.out.print("Scheduled time (YYYY-MM-DD THH:MM): ");
                         String when = scanner.nextLine().trim();
                         LocalDateTime dt = LocalDateTime.parse(when);
                         Task t = new ScheduledTask(desc, p, dt);
@@ -107,7 +107,7 @@ public class Main {
                             manager = tm;
                             System.out.println("Loaded data from " + fn);
                         } else {
-                            System.err.println("File did not contain TaskManager data.");
+                            System.err.println("File did not contain TaskManager data");
                         }
                     } catch (IOException | ClassNotFoundException e) {
                         System.err.println("Load failed: " + e.getMessage());
@@ -125,14 +125,14 @@ public class Main {
                     System.out.println("Shutting down...");
                     running = false;
                 }
-                default -> System.out.println("Unknown option.");
+                default -> System.out.println("Unknown option");
             }
         }
 
         manager.shutdownWorkers();
         scheduler.shutdown();
         scanner.close();
-        System.out.println("Goodbye.");
+        System.out.println("Goodbye!");
     }
 
     private static void printMenu() {

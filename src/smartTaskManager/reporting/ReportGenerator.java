@@ -17,10 +17,10 @@ public class ReportGenerator {
 
     public static void exportTasksToCsv(List<Task> tasks, String filename) throws IOException {
         try (FileWriter fw = new FileWriter(filename)) {
-            fw.write("Type,Description,AssignedUser,Priority,ScheduledTime\n");
+            fw.write("Type, Description, AssignedUser, Priority, ScheduledTime\n");
             for (Task t : tasks) {
                 String type = t.getClass().getSimpleName();
-                String desc = t.getDescription().replace(",", " ");
+                String desc = t.getDescription().replace(", ", " ");
                 String user = t.getAssignedUser() == null ? "" : t.getAssignedUser().name();
                 String priority = "";
                 String scheduled = "";
