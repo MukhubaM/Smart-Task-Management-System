@@ -53,6 +53,7 @@ This project was developed as a capstone to demonstrate both foundational (OCA-l
 ##  Project Structure
 
 smartTaskManager/
+
 ├─ model/          # Domain classes (User, Task, SimpleTask, ScheduledTask, Priority)
 
 ├─ service/        # Core services (TaskManager, TaskService, TaskWorker, TaskScheduler)
