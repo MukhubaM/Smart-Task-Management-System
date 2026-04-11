@@ -20,7 +20,7 @@ public class Main {
         TaskManager manager = new TaskManager();
         TaskScheduler scheduler = new TaskScheduler();
 
-        // Seed data
+        // Starter data
         User alice = manager.addUser("Alice");
         User bob = manager.addUser("Bob");
 
