@@ -12,9 +12,7 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-/**
- * Thread-safe TaskManager. Serializable; transient non-serializable fields are reinitialized after deserialization.
- */
+
 public class TaskManager implements TaskService, Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -23,11 +21,11 @@ public class TaskManager implements TaskService, Serializable {
     private final AtomicInteger userIdGen = new AtomicInteger(1);
     private final AtomicInteger taskIdGen = new AtomicInteger(1);
 
-    // Not serializable: mark transient and recreate after deserialization
+  
     private transient ExecutorService workerPool = Executors.newFixedThreadPool(4);
 
     public TaskManager() {
-        // workerPool already initialized above; constructor kept for clarity
+        // workerPool already initialized above, constructor kept for clarity.
     }
 
     @Override
@@ -89,9 +87,6 @@ public class TaskManager implements TaskService, Serializable {
         return tasks.values().stream().collect(Collectors.groupingBy(t -> t.getClass().getSimpleName(), Collectors.counting()));
     }
 
-    /**
-     * Ensure transient fields are reinitialized after deserialization.
-     */
     private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
         ois.defaultReadObject();
         this.workerPool = Executors.newFixedThreadPool(4);
