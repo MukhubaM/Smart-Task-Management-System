@@ -1,5 +1,6 @@
 package smartTaskManager.model;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public record User(String name, int id) implements Serializable {
